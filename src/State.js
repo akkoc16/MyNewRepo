@@ -8,7 +8,12 @@ class State extends React.Component{
 
         this.state = {
             entry: "",
-            list: []
+            list: [],
+            user: {
+                name: "John",
+                surname: "Doe",
+                age: 30
+            }
 
         }
         
@@ -33,10 +38,16 @@ class State extends React.Component{
     }
 
     addToList = () => {
+        
         let newList = [...this.state.list]
         newList.push({myEntry: this.state.entry})
         this.setState({list: newList})
 
+    }
+    updateObject = () => {
+        let newuser = {...this.state.user}
+        newuser.age = 35
+        this.setState({user: newuser})
     }
     
 
@@ -44,20 +55,26 @@ class State extends React.Component{
         
         return(
             <SafeAreaView style={{flex:1, justifyContent:'center', alignItems: 'center'}}>
-                
-                <FlatList
-                    keyExtractor= {(item,index)=>index.toString()}
-                    data={this.state.list}
-                    renderItem={({item}) => <Text>{item.myEntry}</Text>}/>
-
-
-
-
-                <View style={styles.inputContainer}>
-                    <TextInput 
-                        onChangeText={this.changeText} ></TextInput>
+                <View style={{flex:1}}>
+                    <FlatList
+                        keyExtractor= {(item,index)=>index.toString()}
+                        data={this.state.list}
+                        renderItem={({item}) => <Text>{item.myEntry}</Text>}/>
+                    <View style={styles.inputContainer}>
+                        <TextInput 
+                            onChangeText={this.changeText} ></TextInput>
+                    </View>
+                    <MyButton myTitle="Kaydet" myPress={this.addToList}></MyButton>
                 </View>
-                <MyButton myTitle="Kaydet" myPress={this.addToList}></MyButton>
+                <View style={{flex:1}}>
+                    <Text>Name: {this.state.user.name}</Text>
+                    <Text>Name: {this.state.user.surname}</Text>
+                    <Text>Name: {this.state.user.age}</Text>
+                    <MyButton myTitle="Güncelle" myPress={this.updateObject}></MyButton>
+
+                </View>
+                
+
 
             </SafeAreaView>
         )
