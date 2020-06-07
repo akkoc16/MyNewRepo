@@ -34,18 +34,18 @@ class State extends React.Component{
     }
 
     changeText = (text) => {
-        this.setState({entry: text})
+        this.setState({entry: text}) //tekil bir state güncellemek
     }
 
     addToList = () => {
         
-        let newList = [...this.state.list]
+        let newList = [...this.state.list]     //liste güncellemek
         newList.push({myEntry: this.state.entry})
         this.setState({list: newList})
 
     }
     updateObject = () => {
-        let newuser = {...this.state.user}
+        let newuser = {...this.state.user}  //object güncellemek
         newuser.age = 35
         this.setState({user: newuser})
     }
@@ -71,7 +71,6 @@ class State extends React.Component{
                     <Text>Name: {this.state.user.surname}</Text>
                     <Text>Name: {this.state.user.age}</Text>
                     <MyButton myTitle="Güncelle" myPress={this.updateObject}></MyButton>
-
                 </View>
                 
 
