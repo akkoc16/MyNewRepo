@@ -11,7 +11,7 @@ import {
     TextInput,
     FlatList,
   } from 'react-native';
-import ListItem from './components/ListItem'
+import {ListItem} from './components'
 
 
 const mockData = [

@@ -11,7 +11,7 @@ import {
   Image,
   TextInput,
 } from 'react-native';
-import MyButton from './components/MyButton'
+import {MyButton} from './components'
 
 const App = () => {
     const onText = (text) =>{
